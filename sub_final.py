@@ -1,7 +1,7 @@
 import requests
 import isodate
 
-API_KEY = "AIzaSyCRyzgmr6oyFrlUWAOYW7XyOsztFDq7lsE"
+API_KEY = "YOUR_API_KEY"
 SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 VIDEO_URL = "https://www.googleapis.com/youtube/v3/videos"
 
@@ -53,7 +53,7 @@ def get_top_shorts(topic, max_results=50):
         "maxResults": max_results,
         "type": "video",
         "order": "viewCount",  # First filter trending
-        "key": "AIzaSyCRyzgmr6oyFrlUWAOYW7XyOsztFDq7lsE"
+        "key": "YOUR_API_KEY"
     }
 
     data = requests.get(SEARCH_URL, params=params).json()
@@ -65,7 +65,7 @@ def get_top_shorts(topic, max_results=50):
     details_params = {
         "part": "snippet,contentDetails,statistics",
         "id": ",".join(video_ids),
-        "key": "AIzaSyCRyzgmr6oyFrlUWAOYW7XyOsztFDq7lsE"
+        "key": "YOUR_API_KEY"
     }
 
     video_data = requests.get(VIDEO_URL, params=details_params).json()
@@ -107,3 +107,4 @@ if not shorts:
 else:
     for i, (title, views, url) in enumerate(shorts, 1):
         print(f"{i}. {title} — {views} views\n{url}\n")
+
